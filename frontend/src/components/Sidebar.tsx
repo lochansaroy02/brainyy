@@ -10,17 +10,17 @@ const Sidebar = () => {
             id: 1, name: "Video", icon: <Youtube />
         },
         {
-            id: 1, name: "Tweet", icon: <Twitter />
+            id: 2, name: "Tweet", icon: <Twitter />
         },
         {
-            id: 1, name: "Docs", icon: <FileText strokeWidth={1.5} />
+            id: 3, name: "Docs", icon: <FileText strokeWidth={1.5} />
         },
     ]
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        { localStorage.getItem("token") && localStorage.removeItem("token") }
-        navigate("/login")
+        localStorage.removeItem("token");
+        navigate("/")
     }
 
     return (

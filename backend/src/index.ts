@@ -6,6 +6,9 @@ import { connectToMongoDB } from "./config/db";
 import authRoutes from "./routes/authRoutes";
 import brainRoutes from "./routes/brainRoutes";
 import contentRoutes from "./routes/contentRoutes";
+import docRoutes from "./routes/docRoutes"
+
+
 const app = express()
 const port = 5000
 app.use(express.json())
@@ -27,6 +30,7 @@ process.on('uncaughtException', (error) => {
 app.use("/auth", authRoutes)
 app.use("/content", contentRoutes)
 app.use("/brain", brainRoutes)
+app.use("/docs", docRoutes)
 
 
 

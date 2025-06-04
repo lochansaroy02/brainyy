@@ -12,6 +12,7 @@ const Selected = ({ value, onChange }) => {
             <option value="">Select an option</option>
             <option value="video">Video</option>
             <option value="tweet">Tweet</option>
+            <option value="doc">Document</option>
         </select>
     )
 }

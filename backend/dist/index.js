@@ -10,6 +10,7 @@ const db_1 = require("./config/db");
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
 const brainRoutes_1 = __importDefault(require("./routes/brainRoutes"));
 const contentRoutes_1 = __importDefault(require("./routes/contentRoutes"));
+const docRoutes_1 = __importDefault(require("./routes/docRoutes"));
 const app = (0, express_1.default)();
 const port = 5000;
 app.use(express_1.default.json());
@@ -22,6 +23,7 @@ process.on('uncaughtException', (error) => {
 app.use("/auth", authRoutes_1.default);
 app.use("/content", contentRoutes_1.default);
 app.use("/brain", brainRoutes_1.default);
+app.use("/docs", docRoutes_1.default);
 app.listen(port, () => {
     console.log(`application running on port ${port}`);
 });

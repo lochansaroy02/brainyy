@@ -15,10 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteContent = exports.getContent = exports.createContent = void 0;
 const contentModel_1 = __importDefault(require("../models/contentModel"));
 const createContent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { type, link, title } = req.body;
+    const { type, link, title, desc } = req.body;
     try {
         const content = new contentModel_1.default({
-            type, link, title,
+            type, link, title, desc,
             //@ts-ignore
             userId: req.userId,
             tags: []

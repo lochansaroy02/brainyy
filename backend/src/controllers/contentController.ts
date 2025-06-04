@@ -11,17 +11,18 @@ interface IContent {
     type: string,
     link: string,
     title: string,
+    desc: string,
     tags: Array<ITag>
 }
 
 
 export const createContent = async (req: Request<{}, {}, IContent>, res: Response): Promise<any> => {
-    const { type, link, title } = req.body;
+    const { type, link, title, desc } = req.body;
 
     try {
 
         const content = new Content({
-            type, link, title,
+            type, link, title, desc,
             //@ts-ignore
             userId: req.userId,
             tags: []

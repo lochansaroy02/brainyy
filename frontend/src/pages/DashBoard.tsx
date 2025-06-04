@@ -1,31 +1,21 @@
 
 import axios from 'axios'
-import { useState } from 'react'
-import { useContent } from '../api/UseContent'
+import { Pen } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import Create from '../components/Create'
 import ShareLink from '../components/ShareLink'
 import Sidebar from '../components/Sidebar'
 import { Button } from '../components/ui/Button'
-import PlusIcon from '../components/ui/icons/PlusIcon'
 import ShareIcon from '../components/ui/icons/ShareIcon'
-import { useContentStore, useIsOpenStore, useShareLinkStore } from '../utils/store'
-import { Pen } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useContentStore, useModalOpen, useShareLinkStore } from '../utils/store'
 
 const DashBoard = () => {
-    const navigate = useNavigate();
-    const { isOpen, setIsOpen } = useIsOpenStore()
+    const { isModalOpen, setIsModalOpen } = useModalOpen()
     const [isShareOpen, setIsShareOpen] = useState<boolean>(false);
-
     const { setLink } = useShareLinkStore();
-
-    const handleOpen = async () => {
-        setIsOpen(!isOpen)
-    }
-
     const { content: data } = useContentStore();
-    useContent();
+
 
     const handleShare = async () => {
         setIsShareOpen(!isShareOpen)
@@ -50,21 +40,27 @@ const DashBoard = () => {
         }
     }
 
+    // console.log(data)
+    useEffect(() => {
+    }, [])
+
 
     return (
 
-        <div className=' bg-neutral-800'>
-            {isOpen && <Create />}
+        <div className=' bg-neutral-800 relative'>
+
+            <div className=' absolute left-0 right-0  bottom-0  top-0'>
+                {isModalOpen && < Create />}
+            </div>
             <div className=' flex   relative  h-screen '>
+                <Sidebar />
                 <div className='w-[80%] absolute mt-8  px-4 right-0 h-screen bg-neutral-800 '>
 
                     <div className="flex justify-end gap-4   ">
                         <Button onclick={() => {
-                            navigate("/create")
+                            setIsModalOpen(!isModalOpen);
+                            console.log(isModalOpen)
                         }} variant='primary' size='sm' text='create ' startIcon={<Pen size={"14px"} />} />
-                        <Button onclick={handleOpen} variant="primary" size="sm" text="Add"
-                            startIcon={<PlusIcon size="md" />}
-                        />
 
                         {isShareOpen && <ShareLink />}
                         {isShareOpen == true ?
@@ -79,10 +75,10 @@ const DashBoard = () => {
 
                     <div className=' h-[50%]  mt-4  grid grid-cols-3 gap-2 '>
                         {
-                            data.map(({ type, title, link, _id }, index) => {
+                            data.map(({ type, title, link, _id, desc }, index) => {
                                 return (
 
-                                    <Card key={index} type={type} title={title} link={link} id={_id} />
+                                    <Card key={index} type={type} title={title} link={link} id={_id} description={desc} />
                                 )
                             })
                         }

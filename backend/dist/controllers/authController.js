@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.login = exports.signup = void 0;
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const constant_1 = require("../config/constant");
 const AuthModel_1 = __importDefault(require("../models/AuthModel"));
@@ -34,7 +34,7 @@ const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             });
             return;
         }
-        const hashedPassword = yield bcrypt_1.default.hash(password, 12);
+        const hashedPassword = yield bcryptjs_1.default.hash(password, 12);
         const user = new AuthModel_1.default({
             name, email, password: hashedPassword
         });
@@ -53,7 +53,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user = yield AuthModel_1.default.findOne({ email }).select("+password");
         if (user) {
-            const passwordMatch = yield bcrypt_1.default.compare(password, user === null || user === void 0 ? void 0 : user.password);
+            const passwordMatch = yield bcryptjs_1.default.compare(password, user === null || user === void 0 ? void 0 : user.password);
             if (!passwordMatch) {
                 return res.status(401).json({
                     message: 'incorrect password'
