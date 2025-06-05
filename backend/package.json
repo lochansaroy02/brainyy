@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "build": "rimraf dist && tsc",
+    "build": "rimraf dist && tsc && cd dist && nodemon dist/index.js",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -43,6 +43,7 @@
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsx": "^4.19.3",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3"
+  
   }
 }
