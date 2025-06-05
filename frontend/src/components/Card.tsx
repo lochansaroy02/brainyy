@@ -59,7 +59,7 @@ const Card = ({ type, title, link, id, description }: cardProps) => {
             <div className="w-fit">
                 {type === "tweet" ? (
                     <div className="dark">
-                        <Tweet  id={link.split("/status/")[1]} />
+                        <Tweet id={link.split("/status/")[1]} />
                     </div>
                 ) : type === "video" ? (
                     <div className="py-4 ">

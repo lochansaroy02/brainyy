@@ -24,7 +24,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className='w-[20%] text-neutral-100 flex  fixed flex-col items-start h-screen justify-between  px-4 py-8  bg-neutral-900  '>
+        <div className='w-[20%]  text-neutral-100 flex  fixed flex-col items-start h-screen justify-between  px-4 py-8  bg-neutral-900  '>
             <div className="flex flex-col gap-2    ">
                 <div onClick={() => { navigate("/") }} className=" flex  cursor-pointer items-center   gap-2 mb-4">
                     <span className="text-2xl"><BrainCircuit className="size-10" /> </span>
