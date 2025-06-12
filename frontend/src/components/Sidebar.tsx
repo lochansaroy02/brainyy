@@ -1,10 +1,12 @@
 import { BrainCircuit, FileText, LogOut, Twitter, Youtube } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+import { useSidebarStore } from "../utils/store"
 import { Button } from "./ui/Button"
 
 const Sidebar = () => {
 
 
+    const { isOpen } = useSidebarStore()
     const data = [
         {
             id: 1, name: "Video", icon: <Youtube />
@@ -20,11 +22,15 @@ const Sidebar = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("token");
-        navigate("/")
+        window.location.href = "/";
     }
 
     return (
-        <div className='w-[20%]  text-neutral-100 flex  fixed flex-col items-start h-screen justify-between  px-4 py-8  bg-neutral-900  '>
+        <div className={`lg:w-[20%] lg:translate-x-0 
+       ${isOpen ? 'translate-x-0' : '-translate-x-48'} 
+       z-40
+         transition-all duration-300 ease-in-out text-neutral-100 lg:flex  fixed flex-col items-start h-screen justify-between  px-4 py-8  bg-neutral-900  `}>
+
             <div className="flex flex-col gap-2    ">
                 <div onClick={() => { navigate("/") }} className=" flex  cursor-pointer items-center   gap-2 mb-4">
                     <span className="text-2xl"><BrainCircuit className="size-10" /> </span>

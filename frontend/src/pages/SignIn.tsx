@@ -18,11 +18,8 @@ const SignIn = () => {
                 password
             });
             const data = await response.data
-            if (data) {
-                alert("logged In ")
-            }
             localStorage.setItem("token", data.token)
-            navigate('/')
+            window.location.href = "/";
         } catch (error) {
             console.error(error);
         } finally {
@@ -77,7 +74,7 @@ const SignIn = () => {
                                 type="submit"
                                 className="w-full bg-neutral-700 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
                             >
-                                Log In
+                                {localStorage.getItem("token") ? "sigin In " : "Sign IN "}
                             </button>
                             <div className=' flex  justify-center'>
 

@@ -24,6 +24,9 @@ app.use("/auth", authRoutes_1.default);
 app.use("/content", contentRoutes_1.default);
 app.use("/brain", brainRoutes_1.default);
 app.use("/docs", docRoutes_1.default);
+app.get("/", (req, res) => {
+    res.send("hello world");
+});
 app.listen(port, () => {
     console.log(`application running on port ${port}`);
 });

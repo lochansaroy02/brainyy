@@ -74,7 +74,7 @@ export const getBrain = async (req: Request, res: Response): Promise<any> => {
             })
         }
 
-        
+
 
         res.status(200).json({
             //@ts-ignore

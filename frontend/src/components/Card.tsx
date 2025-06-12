@@ -25,11 +25,11 @@ const Card = ({ type, title, link, id, description }: cardProps) => {
                 }
             })
             const data = await response.data;
-
+            console.log(data)
             const updatedData = content.filter((item) => item.id != id)
             setContent(updatedData)
         } catch (error) {
-
+            console.error(error)
         }
     }
 

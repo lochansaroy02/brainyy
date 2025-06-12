@@ -48,3 +48,16 @@ export const useShareLinkStore = create<ShareLinkStore>((set) => ({
     link: null,
     setLink: (link: string) => set(() => ({ link })),
 }))
+
+
+interface Isidebar {
+    isOpen: boolean,
+    setIsOpen: (isOpen: boolean) => void,
+    toggleSidebar: () => void
+}
+export const useSidebarStore = create<Isidebar>((set) => ({
+    isOpen: false,
+    setIsOpen: (isOpen: boolean) => set(() => ({ isOpen })),
+    toggleSidebar: () => set((state) => ({ isOpen: !state.isOpen }))
+}))
+

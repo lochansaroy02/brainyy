@@ -6,7 +6,7 @@ import DashBoard from "./pages/DashBoard";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import { useContentStore, useDocsStore } from "./utils/store";
+import { useContentStore } from "./utils/store";
 
 
 
