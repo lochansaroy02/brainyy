@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { Request, Response } from "express";
-import jwt, { TokenExpiredError } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { JWT_SECRET } from '../config/constant';
 import Auth from "../models/AuthModel";
 
@@ -88,4 +88,13 @@ export const login = async (req: Request<{}, {}, SignInBody>, res: Response): Pr
     }
 }
 
+
+export const getUser = async (req: Request, res: Response): Promise<any> => {
+    try {
+        const users = await Auth.find()
+        return res.status(200).json({ data: users })
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error', error: error })
+    }
+}
 

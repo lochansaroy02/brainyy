@@ -17,11 +17,15 @@ const DashBoard = () => {
     const { content: data } = useContentStore();
     const { toggleSidebar, isOpen } = useSidebarStore()
 
+    const url = import.meta.env.VITE_BASE_URL;
+    console.log(url)
     const handleShare = async () => {
+
+
         setIsShareOpen(!isShareOpen)
         try {
             if (isShareOpen == true) {
-                const response = await axios.post("http://localhost:5000/brain/share", {
+                const response = await axios.post(`${url}/brain/share`, {
                     share: isShareOpen
                 }, {
                     headers: {
